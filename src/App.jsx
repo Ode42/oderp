@@ -1,5 +1,6 @@
 import "./styles/App.css";
 import React, { useState, useEffect } from "react";
+import OdErpRouter from "./components/router/OdErpRouter";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>{message.message}</h1>
+      <OdErpRouter />
     </div>
   );
 }

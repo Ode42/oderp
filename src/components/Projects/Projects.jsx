@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const Projects = () => {
-  const [message, setMessage] = useState("");
+  const [projects, setProjects] = useState("");
+  const fetchProjects = () => {
+    fetch("http://localhost:5000/api/projects/all")
+      .catch((error) => console.error(error))
+      .then((response) => response.json())
+      .then((data) => {
+        setProjects(data);
+      });
+  };
   useEffect(() => {
-    const fetchMessage = async () => {
-      const data = await fetch("http://localhost:5000/api/projects")
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setMessage(data);
-        });
-    };
-    fetchMessage().catch((error) => console.error(error));
+    fetchProjects();
+    console.log(projects[0]);
   }, []);
   return (
     <div>

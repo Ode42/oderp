@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./../../styles/projects.css";
 
 const Projects = () => {
   const [projects, setProjects] = useState("");
@@ -15,7 +16,7 @@ const Projects = () => {
     console.log(projects[0]);
   }, []);
   return (
-    <div>
+    <div className="projects-page">
       <h1>Projects page</h1>
     </div>
   );

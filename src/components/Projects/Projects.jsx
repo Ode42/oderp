@@ -26,15 +26,19 @@ const Projects = () => {
     return <div>Loading... </div>;
   } else {
     return (
-      <div className="projects">
-        <h1>Projects page</h1>
-        {projects.map((project) => {
-          return (
-            <div className="project" key={project.project_id}>
-              <p>{project.project_name}</p>
-            </div>
-          );
-        })}
+      <div className="projects-page">
+        <div className="projects-info">
+          <h1>Projects page</h1>
+        </div>
+        <div className="projects">
+          {projects.map((project) => {
+            return (
+              <div className="project" key={project.project_id}>
+                <p>{project.project_name}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

@@ -1,3 +1,26 @@
 .projects-page {
   background-color: aliceblue;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.projects {
+  width: 90%;
+  margin: 0;
+  padding: 1%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.project {
+  background-color: yellowgreen;
+  display: flex;
+  flex-flow: column wrap;
+  padding: 2%;
 }

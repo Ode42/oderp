@@ -2,24 +2,42 @@ import React, { useState, useEffect } from "react";
 import "./../../styles/projects.css";
 
 const Projects = () => {
-  const [projects, setProjects] = useState("");
-  const fetchProjects = () => {
-    fetch("http://localhost:5000/api/projects/all")
-      .catch((error) => console.error(error))
-      .then((response) => response.json())
-      .then((data) => {
-        setProjects(data);
-      });
-  };
+  const [projects, setProjects] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    fetchProjects();
-    console.log(projects[0]);
+    fetch("http://localhost:5000/api/projects/all")
+      .then((response) => response.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setProjects(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
   }, []);
-  return (
-    <div className="projects-page">
-      <h1>Projects page</h1>
-    </div>
-  );
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading... </div>;
+  } else {
+    return (
+      <div className="projects">
+        <h1>Projects page</h1>
+        {projects.map((project) => {
+          return (
+            <div className="project" key={project.project_id}>
+              <p>{project.project_name}</p>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 };
 
 export default Projects;

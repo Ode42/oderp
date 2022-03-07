@@ -20,7 +20,7 @@
 }
 
 .project {
-  background-color: yellowgreen;
+  background-color: rgb(108, 138, 48);
   display: flex;
   flex-flow: column wrap;
   padding: 2%;

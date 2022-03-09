@@ -1,1 +1,1 @@
-# OdErp - ERP system for specific organizarional needs
+# OdErp - scalable ERP system platform

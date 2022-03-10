@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./../../styles/auth.css";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,14 +22,17 @@ const Login = () => {
     return response.json();
   };
   const login = async () => {
-    postCredentials("http://localhost:5000/api/auth/login", {
+    await postCredentials("http://localhost:5000/api/auth/login", {
       email: email,
       password: password,
     }).then((data) => {
       console.log(data);
       localStorage.setItem("token", JSON.stringify(data["token"]));
+      navigate("/projects");
     });
   };
+
+  const navigate = useNavigate();
   return (
     <div className="login">
       <h1>Login page</h1>

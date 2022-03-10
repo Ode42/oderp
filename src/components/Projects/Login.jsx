@@ -28,6 +28,7 @@ const Login = () => {
     }).then((data) => {
       console.log(data);
       localStorage.setItem("token", JSON.stringify(data["token"]));
+      console.log(localStorage.getItem("token"));
       navigate("/projects");
     });
   };

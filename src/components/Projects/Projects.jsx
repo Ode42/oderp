@@ -6,11 +6,23 @@ const Projects = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/projects/all")
+  useEffect(async () => {
+    console.log("Rivi 10");
+    await fetch("http://localhost:5000/api/resources", {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
+      headers: {
+        "x-access-token": `${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+    })
       .then((response) => response.json())
       .then(
         (result) => {
+          console.log(result);
           setIsLoaded(true);
           setProjects(result);
         },

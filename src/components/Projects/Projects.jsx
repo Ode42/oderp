@@ -8,7 +8,6 @@ const Projects = () => {
 
   useEffect(async () => {
     const token = localStorage.getItem("token");
-    console.log(token);
     await fetch("http://localhost:5000/api/projects/all", {
       method: "GET",
       headers: {
@@ -19,11 +18,9 @@ const Projects = () => {
       .then((response) => response.json())
       .then(
         (result) => {
-          console.log(result);
           setIsLoaded(true);
           setProjects(result);
           console.log("Onnitsui");
-          console.log(projects);
         },
         (error) => {
           setIsLoaded(true);

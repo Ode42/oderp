@@ -26,9 +26,7 @@ const Login = () => {
       email: email,
       password: password,
     }).then((data) => {
-      console.log(data);
-      localStorage.setItem("token", JSON.stringify(data["token"]));
-      console.log(localStorage.getItem("token"));
+      localStorage.setItem("token", data["token"]);
       navigate("/projects");
     });
   };
@@ -38,7 +36,7 @@ const Login = () => {
     <div className="login">
       <h1>Login page</h1>
       <form className="login-form">
-        <label for="email">E-mail</label>
+        <label htmlFor="email">E-mail</label>
         <input
           id="email"
           name="email"
@@ -46,7 +44,7 @@ const Login = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           name="password"

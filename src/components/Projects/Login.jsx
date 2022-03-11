@@ -1,26 +1,13 @@
 import React, { useState } from "react";
 import "./../../styles/auth.css";
 import { useNavigate } from "react-router-dom";
+import postCredentials from "../../services/postCredentials";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const postCredentials = async (url = "", data = {}) => {
-    const response = await fetch(url, {
-      method: "POST",
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      redirect: "follow",
-      referrerPolicy: "no-referrer",
-      body: JSON.stringify(data),
-    });
-    return response.json();
-  };
   const login = async () => {
     await postCredentials("http://localhost:5000/api/auth/login", {
       email: email,
@@ -31,7 +18,6 @@ const Login = () => {
     });
   };
 
-  const navigate = useNavigate();
   return (
     <div className="login">
       <h1>Login page</h1>

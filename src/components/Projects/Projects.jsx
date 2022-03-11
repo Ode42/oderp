@@ -7,17 +7,14 @@ const Projects = () => {
   const [error, setError] = useState(null);
 
   useEffect(async () => {
-    console.log("Rivi 10");
-    await fetch("http://localhost:5000/api/resources", {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    await fetch("http://localhost:5000/api/projects/all", {
       method: "GET",
-      mode: "cors",
-      cache: "no-cache",
       headers: {
-        "x-access-token": `${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
+        "jwt-token": `${token}`,
       },
-      redirect: "follow",
-      referrerPolicy: "no-referrer",
     })
       .then((response) => response.json())
       .then(
@@ -25,6 +22,8 @@ const Projects = () => {
           console.log(result);
           setIsLoaded(true);
           setProjects(result);
+          console.log("Onnitsui");
+          console.log(projects);
         },
         (error) => {
           setIsLoaded(true);
